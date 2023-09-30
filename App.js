@@ -1,12 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import RootNavigation from './src/components/navigation/RootNavigation';
+import {
+  useFonts,
+  Montserrat_300Light,
+  Montserrat_400Regular,
+  Montserrat_700Bold
+} from '@expo-google-fonts/montserrat';
+import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
+import { AuthProvider } from './src/context/AuthContext';
+
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#0B610B',
+    secondary: '#fff',
+  },
+};
 
 export default function App() {
+  const [fontLoader, fontError] = useFonts({
+    Montserrat_300Light,
+    Montserrat_400Regular,
+    Montserrat_700Bold
+  });
+
+  if(!fontLoader && !fontError) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AuthProvider>
+      <PaperProvider theme={theme}>
+        <RootNavigation />
+      </PaperProvider>
+    </AuthProvider>
   );
 }
 
