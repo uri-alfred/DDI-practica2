@@ -40,7 +40,6 @@ export default function Register(props) {
 
     return (
         <View>
-            <Text>Registro</Text>
             <TextInput
                 label="Correo Electrónico"
                 style={globalStyle.form.input}

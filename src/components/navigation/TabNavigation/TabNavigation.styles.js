@@ -2,7 +2,10 @@
 
 export const styles = StyleSheet.create({
     icon: {
-        fontSize: 25
+        fontSize: 32,
+    },
+    tabBar: {
+        backgroundColor: '#000'
     }
     
 });

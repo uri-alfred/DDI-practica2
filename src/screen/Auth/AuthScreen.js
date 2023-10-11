@@ -1,4 +1,4 @@
-﻿import { View, Text, Image, KeyboardAvoidingView, Platform } from 'react-native'
+﻿import { View, Text, Image, KeyboardAvoidingView, Platform, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import ButtonSocial from '../../components/ButtonSocial';
 import Colors from '../../components/constants/Colors';
@@ -15,23 +15,19 @@ export default function AuthScreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <Image source={imageSource} style={styles.image} />
-      <KeyboardAvoidingView behavior={Platform.OS === 'android' ? "padding" : "height"}>
-        {showLogin ? <LoginForm showRegister={showLoginRegister} /> : <Register showLogin={showLoginRegister} />}
-      </KeyboardAvoidingView>
+    <ImageBackground
+      source={require('../../assets/background-img.jpg')}
+      style={styles.backgroundImage}
+    >
 
+      <View style={styles.container}>
+        <Image source={imageSource} style={styles.image} />
+        <KeyboardAvoidingView behavior={Platform.OS === 'android' ? "padding" : "height"}>
+          {showLogin ? <LoginForm showRegister={showLoginRegister} /> : <Register showLogin={showLoginRegister} />}
+        </KeyboardAvoidingView>
 
-      {/* 
-      <Text> {'\n'} </Text>
-      <Text style={styles.title}>AuthScreen</Text>
-      <Text> {'\n'} </Text>
-      <View style={styles.contentButton}>
-        <ButtonSocial title="Iniciar sesión con Facebook" imageType="facebook" color={Colors.facebookColor} />
-        <ButtonSocial title="Iniciar sesión con Google" imageType="google" color={Colors.googleColor} />
-        <ButtonSocial title="Iniciar sesión con Twitter" imageType="twitter" color={Colors.twitterColor} />
-      </View> */}
-    </View>
+      </View>
+    </ImageBackground>
   )
 }
 

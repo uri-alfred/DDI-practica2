@@ -3,6 +3,7 @@
 export const form = StyleSheet.create({
     input: {
         marginBottom: 20,
+        height: 50
     },
     buttonSubmit: {
         padding: 5,
