@@ -7,13 +7,14 @@ import SettingsScreen from '../../../screen/SettingsScreen';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './TabNavigation.styles';
 import RickAndMortyApi from '../../../api/rm';
+import StackNavigation from '../StackNavigation/StackNavigation';
 
 export default function TabNavigation() {
     const Tab = createBottomTabNavigator();
 
     return (
         <Tab.Navigator
-            initialRouteName='Home'
+            initialRouteName='StackNavigation'
             screenOptions={({ route }) => ({
                 tabBarIcon: (routeStatus) => setIcon(route, routeStatus),
                 tabBarStyle: styles.tabBar,
@@ -28,8 +29,8 @@ export default function TabNavigation() {
                 }}
             />
             <Tab.Screen
-                name='Home'
-                component={RickAndMortyApi}
+                name='StackNavigation'
+                component={StackNavigation}
                 options={{
                     title: '',
                     tabBarIcon: () => <Image
@@ -59,9 +60,6 @@ const setIcon = (route, routeStatus) => {
         color = '#fff';
     }
 
-    if (route.name === 'Home') {
-        iconName = 'home';
-    }
     if (route.name === 'Favorites') {
         iconName = 'heart';
     }

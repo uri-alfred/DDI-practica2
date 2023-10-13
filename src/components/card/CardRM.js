@@ -9,16 +9,16 @@ export default function CardRM(props) {
   const navigation = useNavigation();
 
   const goToPersonaje = () => {
-    // navigation.navigate('Detalle', {
-    //   id: characters.id,
-    //   name: characters.name,
-    //   status: characters.status,
-    //   species: characters.species,
-    //   type: characters.type,
-    //   image: characters.image,
-    //   gender: characters.gender,
-    //   origin: characters.origin.name,
-    // })
+    navigation.navigate('Detail', {
+      id: characters.id,
+      name: characters.name,
+      status: characters.status,
+      species: characters.species,
+      type: characters.type,
+      image: characters.image,
+      gender: characters.gender,
+      origin: characters.origin.name,
+    })
 
   }
   return (
