@@ -2,11 +2,14 @@
 import React from 'react'
 import RickAndMortyApi from '../../../api/rm'
 import CharacterDetail from '../../../screen/Character/CharacterDetail'
+import { Image } from 'react-native'
 
 export default function StackNavigation() {
   const Stack = createNativeStackNavigator()
     return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    initialRouteName='RickAndMortyApi'
+    >
         <Stack.Screen 
         name='RickAndMortyApi'
         component={RickAndMortyApi}
@@ -19,8 +22,14 @@ export default function StackNavigation() {
         name='Detail'
         component={CharacterDetail}
         options={{
-            headerShown: false,
-            headerTransparent: true
+            title: '',
+            headerTransparent: true,
+            headerBackImage: () => (
+              <Image source={require('../../../assets/logo-button.png')} style={{ width: 50, height: 50}} />
+              ),
+            headerLeftContainerStyle: {
+              
+            }
         }}
         />
     </Stack.Navigator>

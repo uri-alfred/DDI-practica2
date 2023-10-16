@@ -8,6 +8,7 @@ import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './TabNavigation.styles';
 import RickAndMortyApi from '../../../api/rm';
 import StackNavigation from '../StackNavigation/StackNavigation';
+import StackFavoritos from '../StackNavigation/StackFavoritos';
 
 export default function TabNavigation() {
     const Tab = createBottomTabNavigator();
@@ -42,10 +43,12 @@ export default function TabNavigation() {
                 }}
             />
             <Tab.Screen
-                name='Favorites'
-                component={FavoritesScreen}
+                name='StackFavoritos'
+                component={StackFavoritos}
                 options={{
-                    title: 'Favoritos'
+                    title: 'Favoritos',
+                    tabBarLabel: '',
+                    headerTransparent: true
                 }}
             />
         </Tab.Navigator>
@@ -60,7 +63,7 @@ const setIcon = (route, routeStatus) => {
         color = '#fff';
     }
 
-    if (route.name === 'Favorites') {
+    if (route.name === 'StackFavoritos') {
         iconName = 'heart';
     }
     if (route.name === 'Account') {

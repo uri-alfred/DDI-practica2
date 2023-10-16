@@ -1,23 +1,28 @@
-﻿import { View, Text } from 'react-native'
+﻿import { View, Text, ImageBackground } from 'react-native'
 import React from 'react'
 import { styles } from './CharacterDetail.styles';
 import { Avatar, IconButton } from 'react-native-paper';
 import Favoritos from '../../components/Favoritos/Favoritos';
+import TableDetails from '../../components/TableDetails/TableDetails';
 
 export default function CharacterDetail(props) {
   const { navigation, route: { params } } = props;
   // console.log(params.id, params.name)
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../../assets/background-img.jpg')}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.container}>
       <Avatar.Image size={250} source={{ uri: params.image }} style={styles.image} />
-      <Text style={styles.title}> {params.name}</Text>
-      <Text style={styles.title}> {params.species}</Text>
-      <Text style={styles.title}> {params.status}</Text>
-      <Text style={styles.title}> {params.type}</Text>
-      <Text style={styles.title}> {params.gender}</Text>
-      <Text style={styles.title}> {params.origin}</Text>
-      <Favoritos id={params.id} />
-    </View>
+      <View style={styles.containerFav}>
+        <Text style={styles.title}> {params.name}</Text>
+        <Favoritos id={params.id} />
+      </View>
+      </View>
+
+      <TableDetails params={params} />
+    </ImageBackground>
   )
 }
