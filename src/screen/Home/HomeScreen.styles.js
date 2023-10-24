@@ -10,6 +10,10 @@ export const styles = StyleSheet.create({
         marginBottom: 5,
         marginTop: 15,
         textAlign: 'center'
+    },
+    spiner: {
+        marginTop: 20,
+        marginBottom: 50,
     }
     
 });

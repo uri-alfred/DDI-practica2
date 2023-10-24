@@ -24,6 +24,11 @@ export const styles = StyleSheet.create({
         fontSize: 35,
         textAlign: 'center',
         fontWeight: 'bold',
+    },
+    btnBack: {
+        marginTop: 60,
+        marginLeft: 15,
+        backgroundColor: '#79B547'
     }
 
 });

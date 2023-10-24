@@ -24,12 +24,13 @@ export default function StackNavigation() {
         options={{
             title: '',
             headerTransparent: true,
-            headerBackImage: () => (
-              <Image source={require('../../../assets/logo-button.png')} style={{ width: 50, height: 50}} />
-              ),
-            headerLeftContainerStyle: {
+            headerShown: false,
+            // headerBackImage: () => (
+            //   <Image source={require('../../../assets/logo-button.png')} style={{ width: 50, height: 50}} />
+            //   ),
+            // headerLeftContainerStyle: {
               
-            }
+            // }
         }}
         />
     </Stack.Navigator>

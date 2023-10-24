@@ -6,13 +6,28 @@ import HomeScreen from '../screen/Home/HomeScreen'
 
 export default function RickAndMortyApi() {
     const [characters, setCharacters] = useState([]);
+    const [nextUrl, setNextUrl] = useState(null);
+
+    const loadMoreData = async () => {
+        try {
+            if (nextUrl) {
+                const response = await axios.get(nextUrl);
+                const newCharacters = response.data.results;
+                setCharacters([...characters, ...newCharacters]);
+                setNextUrl(response.data.info.next);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(ENV.API_URL_RM);
                 setCharacters(response.data.results)
-                // console.log('response', response.data)
+                setNextUrl(response.data.info.next)
+                // console.log('response', response)
             } catch (error) {
                 console.log(error)
             }
@@ -20,7 +35,7 @@ export default function RickAndMortyApi() {
         fetchData()
     }, [])
 
-  return (
-    <HomeScreen characters={characters} />
-  )
+    return (
+        <HomeScreen characters={characters} loadMoreData={loadMoreData} nextUrl={nextUrl} />
+    )
 }

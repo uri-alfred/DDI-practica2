@@ -24,12 +24,13 @@ export default function StackFavoritos() {
         options={{
           title: '',
           headerTransparent: true,
-          headerBackImage: () => (
-            <Image source={require('../../../assets/logo-button.png')} />
-          ),
-          headerLeftContainerStyle: {
-            marginTop: 90
-          }
+          headerShown: false,
+          // headerBackImage: () => (
+          //   <Image source={require('../../../assets/logo-button.png')} />
+          // ),
+          // headerLeftContainerStyle: {
+          //   marginTop: 90
+          // }
 
         }}
       />

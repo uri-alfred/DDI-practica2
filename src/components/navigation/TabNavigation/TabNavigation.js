@@ -46,7 +46,7 @@ export default function TabNavigation() {
                 name='StackFavoritos'
                 component={StackFavoritos}
                 options={{
-                    title: 'Favoritos',
+                    title: '',
                     tabBarLabel: '',
                     headerTransparent: true
                 }}

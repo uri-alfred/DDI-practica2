@@ -1,4 +1,4 @@
-﻿import { View, Text, ImageBackground } from 'react-native'
+﻿import { View, Text, ImageBackground, Image } from 'react-native'
 import React from 'react'
 import { styles } from './CharacterDetail.styles';
 import { Avatar, IconButton } from 'react-native-paper';
@@ -14,6 +14,13 @@ export default function CharacterDetail(props) {
       source={require('../../assets/background-img.jpg')}
       style={styles.backgroundImage}
     >
+
+<IconButton
+    icon={() => <Image source={require('../../assets/btn-back.png')} />}
+    size={40}
+    style={styles.btnBack}
+    onPress={() => navigation.goBack()}
+  />
       <View style={styles.container}>
       <Avatar.Image size={250} source={{ uri: params.image }} style={styles.image} />
       <View style={styles.containerFav}>
