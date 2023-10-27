@@ -1,14 +1,10 @@
-﻿import { View, Text, Image } from 'react-native'
+﻿import { Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import HomeScreen from '../../../screen/Home/HomeScreen';
-import FavoritesScreen from '../../../screen/FavoritesScreen';
-import AccountScreen from '../../../screen/AccountScreen';
-import SettingsScreen from '../../../screen/SettingsScreen';
 import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './TabNavigation.styles';
-import RickAndMortyApi from '../../../api/rm';
 import StackNavigation from '../StackNavigation/StackNavigation';
 import StackFavoritos from '../StackNavigation/StackFavoritos';
+import StackAccount from '../StackNavigation/StackAccount';
 
 export default function TabNavigation() {
     const Tab = createBottomTabNavigator();
@@ -24,9 +20,14 @@ export default function TabNavigation() {
         >
             <Tab.Screen
                 name='Account'
-                component={AccountScreen}
+                component={StackAccount}
                 options={{
-                    title: 'Mi cuenta'
+                    title: '',
+                    tabBarLabel: '',
+                    // headerStyle: {
+                    //     backgroundColor: '#000'
+                    // }
+                    headerTransparent: true
                 }}
             />
             <Tab.Screen

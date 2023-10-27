@@ -2,6 +2,7 @@
 import { storageController } from "../api/token";
 import { userController } from "../api/users";
 import { tokenExpired } from "../utils/tokenExpired";
+import { addAllFavoritosApi, removeStorageFavoriteApi } from "../api/favorito";
 
 
 export const AuthContext = createContext();
@@ -34,6 +35,9 @@ export const AuthProvider = (props) => {
             // console.log('Obteniendo', token);
             await storageController.setToken(token);
             const response = await userController.getMe(token);
+            if(response.favoritos) {
+                await addAllFavoritosApi(response.favoritos);
+            }
             setUser(response);
             setLoading(false);
             // console.log('User', response);
@@ -46,6 +50,7 @@ export const AuthProvider = (props) => {
     const logout = async () => {
         try {
             await storageController.removeToken();
+            await removeStorageFavoriteApi();
             setUser(null);
             setLoading(false);
         } catch (error) {

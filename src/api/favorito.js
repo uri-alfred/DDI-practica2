@@ -6,7 +6,7 @@ import { includes, pull } from "lodash";
 export const getFavoriteApi = async () => {
     try {
         const response = await AsyncStorage.getItem(ENV.STORAGE.FAVORITE);
-        return JSON.parse(response || []);
+        return response ? JSON.parse(response) : [];
     } catch (error) {
         console.log(error);
     }
@@ -42,5 +42,24 @@ export const removeFavoriteApi = async (id) => {
         await AsyncStorage.setItem(ENV.STORAGE.FAVORITE, JSON.stringify(newFavorites));
     } catch (error) {
         console.log(error)
+    }
+}
+
+// función que elimina los favoritos del storage
+export const removeStorageFavoriteApi = async () => {
+    try {
+        // const favorites = await getFavoriteApi();
+        // elimina los datos en favoritos
+        await AsyncStorage.removeItem(ENV.STORAGE.FAVORITE);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const addAllFavoritosApi = async (favorites) => {
+    try {
+        await AsyncStorage.setItem(ENV.STORAGE.FAVORITE, JSON.stringify(favorites));
+    } catch (error) {
+        console.log(error);
     }
 }
