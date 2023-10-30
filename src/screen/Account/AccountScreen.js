@@ -24,9 +24,12 @@ export default function AccountScreen() {
           text: "Cerrar sesión",
           onPress: async () => {
             const pjFavoritos = await getFavoriteApi();
-            console.log("Favoritos",pjFavoritos)
-            await upDateUser('favoritos', pjFavoritos) 
-            await userController.actualizaUser(user.id, user)
+            const data = {
+              favoritos: pjFavoritos
+            }
+            // console.log("Favoritos",pjFavoritos)
+            await userController.actualizaUser(user.id, data)
+            upDateUser('favoritos', pjFavoritos)
             logout()
           }
         }

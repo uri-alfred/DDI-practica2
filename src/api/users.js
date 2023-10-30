@@ -1,6 +1,5 @@
 ﻿import { authFetch } from "../utils/authFetch";
 import { ENV } from "../utils/constants"
-import { storageController } from "./token";
 
 
 const getMe = async (token) => {
@@ -17,25 +16,21 @@ const getMe = async (token) => {
 
 const actualizaUser = async (id, data) => {
     
-    const token = await storageController.getToken();
-    // console.log("token", token)
-    // console.log("users data",JSON.stringify(data))
-
-    fetch(`${ENV.API_URL}/${ENV.ENDPINTS.USERS_UPDATE_USER}/${id}`, {
+    try {
+      const url = `${ENV.API_URL}/${ENV.ENDPINTS.USERS}/${id}`;
+      const params = {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(data),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('Success:', data);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+        body: JSON.stringify(data)
+      }
+      const response = await authFetch(url, params);
+      if (response.statusCode) throw "Error al actualizar el usuario";
+      return await response.json();
+    } catch (error) {
+      throw error;
+    }
 }
 
 export const userController = {

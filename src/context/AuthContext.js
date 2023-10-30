@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, createContext } from "react";
+﻿import React, { useState, useEffect, createContext, useCallback } from "react";
 import { storageController } from "../api/token";
 import { userController } from "../api/users";
 import { tokenExpired } from "../utils/tokenExpired";
@@ -59,12 +59,9 @@ export const AuthProvider = (props) => {
         }
     }
 
-    const upDateUser = (key, value) => {
-        setUser({
-            ...user,
-            [key]: value
-        })
-    }
+    const upDateUser = useCallback((key, value) => {
+        setUser((prevUser) => ({ ...prevUser, [key]: value }));
+    }, []);
 
     const data = {
         user,

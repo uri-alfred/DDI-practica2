@@ -5,7 +5,7 @@
         REGISTER: 'auth/local/register',
         LOGIN: 'auth/local',
         USERS_ME: 'users/me',
-        USERS_UPDATE_USER: 'users',
+        USERS: 'users',
     },
     STORAGE: {
         TOKEN: "token",

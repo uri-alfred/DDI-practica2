@@ -23,7 +23,7 @@ export default function AuthScreen() {
       <View style={styles.container}>
         <Image source={imageSource} style={styles.image} />
         <KeyboardAvoidingView behavior={Platform.OS === 'android' ? "padding" : "height"}>
-          {showLogin ? <LoginForm showRegister={showLoginRegister} /> : <Register showLogin={showLoginRegister} />}
+          {showLogin ? <Register showLogin={showLoginRegister} /> : <LoginForm showRegister={showLoginRegister} />}
         </KeyboardAvoidingView>
 
       </View>
