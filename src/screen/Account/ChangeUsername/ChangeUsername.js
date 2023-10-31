@@ -1,12 +1,14 @@
-﻿import { View, Text } from 'react-native'
+﻿import { View, Text, Image } from 'react-native'
 import React from 'react'
 import * as Yup from 'yup'
 import { useAuth } from '../../../hooks/useAuth';
 import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
 import { userController } from '../../../api/users';
-import { Button, TextInput } from 'react-native-paper';
+import { Button, IconButton, TextInput } from 'react-native-paper';
 import { globalStyle } from '../../../styles';
+import { styles } from './ChangeUsername.styles';
+import Toast from 'react-native-root-toast';
 
 export default function ChangeUsername() {
   const { user, upDateUser } = useAuth();
@@ -38,7 +40,15 @@ export default function ChangeUsername() {
 });
 
   return (
-    <View style={{ marginTop: 80}}>
+    <View style={styles.container}>
+      
+      <IconButton
+        icon={() => <Image source={require('../../../assets/btn-back.png')} />}
+        size={40}
+        style={styles.btnBack}
+        onPress={() => navigation.goBack()}
+      />
+      <View style={styles.form}>
       <TextInput
                 label="Nombre de usuario"
                 style={globalStyle.form.input}
@@ -55,6 +65,7 @@ export default function ChangeUsername() {
             >
                 Guardar
             </Button>
+    </View>
     </View>
   )
 }

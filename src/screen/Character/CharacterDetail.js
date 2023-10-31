@@ -15,18 +15,18 @@ export default function CharacterDetail(props) {
       style={styles.backgroundImage}
     >
 
-<IconButton
-    icon={() => <Image source={require('../../assets/btn-back.png')} />}
-    size={40}
-    style={styles.btnBack}
-    onPress={() => navigation.goBack()}
-  />
+      <IconButton
+        icon={() => <Image source={require('../../assets/btn-back.png')} />}
+        size={40}
+        style={styles.btnBack}
+        onPress={() => navigation.goBack()}
+      />
       <View style={styles.container}>
-      <Avatar.Image size={250} source={{ uri: params.image }} style={styles.image} />
-      <View style={styles.containerFav}>
-        <Text style={styles.title}> {params.name}</Text>
-        <Favoritos id={params.id} />
-      </View>
+        <Avatar.Image size={250} source={{ uri: params.image }} style={styles.image} />
+        <View style={styles.containerFav}>
+          <Text style={styles.title}> {params.name}</Text>
+          <Favoritos id={params.id} />
+        </View>
       </View>
 
       <TableDetails params={params} />

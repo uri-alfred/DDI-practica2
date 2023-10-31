@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
         width: '90%'
     },
     image: {
-        marginBottom: 20,
-        marginTop: 90
+        marginBottom: 10,
+        marginTop: 20
     },
     title: {
         color: '#79B547',

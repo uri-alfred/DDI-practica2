@@ -1,6 +1,6 @@
-﻿import { View, Text } from 'react-native'
+﻿import { View, Text, Image } from 'react-native'
 import React from 'react'
-import { Button, TextInput } from 'react-native-paper'
+import { Button, IconButton, TextInput } from 'react-native-paper'
 import { globalStyle } from '../../../styles'
 import { userController } from '../../../api/users';
 import { useAuth } from '../../../hooks/useAuth';
@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import Toast from 'react-native-root-toast';
 import { useNavigation } from '@react-navigation/native';
+import { styles } from './ChangeName.styles';
 
 export default function ChangeName() {
 
@@ -43,7 +44,14 @@ export default function ChangeName() {
 });
 
   return (
-    <View style={{ marginTop: 80}}>
+    <View style={styles.container}>
+      <IconButton
+        icon={() => <Image source={require('../../../assets/btn-back.png')} />}
+        size={40}
+        style={styles.btnBack}
+        onPress={() => navigation.goBack()}
+      />
+      <View style={styles.form}>
       <TextInput
                 label="Nombre(s)"
                 style={globalStyle.form.input}
@@ -68,6 +76,7 @@ export default function ChangeName() {
             >
                 Guardar
             </Button>
+      </View>
     </View>
   )
 }

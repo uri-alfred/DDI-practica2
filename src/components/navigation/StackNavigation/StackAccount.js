@@ -16,40 +16,35 @@ export default function StackAccount() {
         name='AccountScreen'
         component={AccountScreen}
         options={{
-          title: '',
-          headerTransparent: true
+          headerShown: false
         }}
       />
       <Stack.Screen
         name='ChangeName'
         component={ChangeName}
         options={{
-          title: '',
-          headerTransparent: true
+          headerShown: false
         }}
       />
       <Stack.Screen
         name='ChangeEmail'
         component={ChangeEmail}
         options={{
-          title: '',
-          headerTransparent: true
+          headerShown: false
         }}
       />
       <Stack.Screen
         name='ChangeUsername'
         component={ChangeUsername}
         options={{
-          title: '',
-          headerTransparent: true
+          headerShown: false
         }}
       />
       <Stack.Screen
         name='ChangePassword'
         component={ChangePassword}
         options={{
-          title: '',
-          headerTransparent: true
+          headerShown: false
         }}
       />
       

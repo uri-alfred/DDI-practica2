@@ -24,9 +24,6 @@ export default function TabNavigation() {
                 options={{
                     title: '',
                     tabBarLabel: '',
-                    // headerStyle: {
-                    //     backgroundColor: '#000'
-                    // }
                     headerTransparent: true
                 }}
             />
