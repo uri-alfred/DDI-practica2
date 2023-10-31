@@ -16,10 +16,12 @@ export default function ChangePassword() {
 
   const formik = useFormik({
     initialValues: {
-      password: ''
+      password: '',
+      repeatPassword: ''
     },
     validationSchema: Yup.object({
-      password: Yup.string().required(true).min(8, true)
+      password: Yup.string().required(true).min(8, true),
+      repeatPassword: Yup.string().required(true).min(8, true).oneOf([Yup.ref('password')], true)
     }),
     validateOnChange: false,
     onSubmit: async (formData) => {
@@ -57,6 +59,14 @@ export default function ChangePassword() {
           value={formik.values.password}
           error={formik.errors.password}
         />
+        <TextInput
+                label="Repetir contraseña"
+                style={globalStyle.form.input}
+                secureTextEntry
+                onChangeText={(text) => formik.setFieldValue('repeatPassword', text)}
+                value={formik.values.repeatPassword}
+                error={formik.errors.repeatPassword}
+            />
         <Button
           mode="contained"
           style={globalStyle.form.buttonSubmit}
